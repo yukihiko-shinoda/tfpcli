@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """Run `terraform plan` for every environment of the project selected via `--prj`."""
 
 from __future__ import annotations

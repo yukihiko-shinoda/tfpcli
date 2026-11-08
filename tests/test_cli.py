@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """Tests for `tfpcli.cli`."""
 
 from __future__ import annotations
@@ -75,6 +77,6 @@ class TestMain:
         (tmp_path / "tfp.yml").write_text(CONFIG_YAML)
         runner = CliRunner()
         result = runner.invoke(cli.main, ["terraform-project-a", "-n", "0"], standalone_mode=False)
-        assert result.return_value == 0
+        assert result.return_value == 0, result.output
         log = (tmp_path / "plan_logs" / "default.log").read_text()
         assert "No changes. Your infrastructure matches the configuration." in log

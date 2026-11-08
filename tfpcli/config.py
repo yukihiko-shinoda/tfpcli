@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """This module implements configuration."""
 
 import os

@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """Console script for tfp."""
 
 from pathlib import Path

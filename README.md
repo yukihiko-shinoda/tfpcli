@@ -1,7 +1,7 @@
 # TFP
 
 [![Test](https://github.com/yukihiko-shinoda/tfp/workflows/Test/badge.svg)](https://github.com/yukihiko-shinoda/tfp/actions?query=workflow%3ATest)
-[![CodeQL](https://github.com/yukihiko-shinoda/tfp/workflows/CodeQL/badge.svg)](https://github.com/yukihiko-shinoda/tfp/actions?query=workflow%3ACodeQL)
+[![CodeQL](https://github.com/yukihiko-shinoda/tfp/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/yukihiko-shinoda/tfp/actions/workflows/github-code-scanning/codeql)
 [![Code Coverage](https://qlty.sh/gh/yukihiko-shinoda/projects/tfpcli/coverage.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/tfpcli)
 [![Maintainability](https://qlty.sh/gh/yukihiko-shinoda/projects/tfpcli/maintainability.svg)](https://qlty.sh/gh/yukihiko-shinoda/projects/tfpcli)
 [![Dependabot](https://flat.badgen.net/github/dependabot/yukihiko-shinoda/tfp?icon=dependabot)](https://github.com/yukihiko-shinoda/tfp/security/dependabot)

@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """Parametrize integration tests from the project selected via the `--prj` option."""
 
 import pytest
