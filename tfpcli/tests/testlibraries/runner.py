@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Yukihiko Shinoda
+# SPDX-License-Identifier: MIT
 """Render and run a project's Terraform commands, serialized across pytest-xdist workers."""
 
 from __future__ import annotations
