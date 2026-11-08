@@ -25,12 +25,21 @@ apt-get install -y --no-install-recommends \
     libdigest-sha-perl \
     unzip
 rm -rf /var/lib/apt/lists/*
+DEB_NAME="tenv_${TENV_VERSION}_${BUILDARCH}.deb"
 # --fail: don't save an HTTP error page as the .deb; --retry: ride out transient GitHub errors.
-curl --fail --silent --show-error --location --retry 5 --retry-all-errors \
-    --output "tenv_${TENV_VERSION}_${BUILDARCH}.deb" \
-    "https://github.com/tofuutils/tenv/releases/download/${TENV_VERSION}/tenv_${TENV_VERSION}_${BUILDARCH}.deb"
-dpkg -i "tenv_${TENV_VERSION}_${BUILDARCH}.deb"
-rm "tenv_${TENV_VERSION}_${BUILDARCH}.deb"
+CURL=(curl --fail --silent --show-error --location --retry 5 --retry-all-errors)
+# Download through the REST API's release asset endpoint rather than
+# https://github.com/tofuutils/tenv/releases/download/..., which kept answering 504 for every tenv
+# asset (other repositories' release downloads were unaffected).
+# - REST API endpoints for release assets - GitHub Docs
+#   https://docs.github.com/en/rest/releases/assets#get-a-release-asset
+ASSET_URL=$(
+    "${CURL[@]}" "https://api.github.com/repos/tofuutils/tenv/releases/tags/${TENV_VERSION}" |
+        python3 -c 'import json, sys; print(next(a["url"] for a in json.load(sys.stdin)["assets"] if a["name"] == sys.argv[1]))' "${DEB_NAME}"
+)
+"${CURL[@]}" --header "Accept: application/octet-stream" --output "${DEB_NAME}" "${ASSET_URL}"
+dpkg -i "${DEB_NAME}"
+rm "${DEB_NAME}"
 tenv completion bash > ~/.tenv.completion.bash
 # Reason: To put raw string into ~/.bashrc .
 # shellcheck disable=SC2016
