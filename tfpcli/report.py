@@ -37,7 +37,8 @@ class Splitter:
 
 def main() -> None:
     """Render every plan log under `plan_logs/` into a single `report.md`."""
-    log_files = Path("plan_logs").glob("*.log")
+    # Path.glob() yields entries in filesystem-dependent order, so sort for a deterministic report.
+    log_files = sorted(Path("plan_logs").glob("*.log"))
     generator = (Path(log_file) for log_file in log_files)
     splitter = Splitter()
     environments = {log_file.stem: splitter.cut(log_file) for log_file in generator}
